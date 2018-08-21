@@ -52,6 +52,13 @@ public class LoginActivity extends AppCompatActivity {
                 final String login_user_id=login_id.getText().toString();
                 final String login_user_pwd=login_pwd.getText().toString();
 
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(login_user_id,login_user_pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                    }
+                });
+                
                 Response.Listener<String> responseListener =new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
