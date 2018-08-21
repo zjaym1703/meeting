@@ -41,7 +41,8 @@ public class CreateGroupActivity extends AppCompatActivity implements GroupAdapt
     RecyclerView.LayoutManager layoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
     List<GroupModel> my_group=new ArrayList<>();
 
-    String group_tutor_id,group_name;
+    String group_name;
+    String group_tutor_id= FirebaseAuth.getInstance().getCurrentUser().getEmail();
     GroupAdapter adapter;
 
     //이름담아두려는 변수
@@ -172,7 +173,6 @@ public class CreateGroupActivity extends AppCompatActivity implements GroupAdapt
         Intent intent=new Intent(CreateGroupActivity.this,GroupActivity.class);
         Log.d("그룹이름",title.get(position));
         intent.putExtra("그룹이름",title.get(position));
-        intent.putExtra("아이디",group_tutor_id);//
         this.startActivity(intent);
     }
 
