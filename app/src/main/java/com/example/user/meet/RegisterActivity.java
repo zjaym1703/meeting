@@ -97,6 +97,16 @@ public class RegisterActivity extends AppCompatActivity {
                     RegisterRequest registerRequest = new RegisterRequest(user_email, user_pwd, user_name, user_pos, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                     queue.add(registerRequest);
+                
+                    //회원등록 파이어베이스
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(user_email,user_pwd)
+                            .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    //회원가입성공시
+                                    Toast.makeText(RegisterActivity.this,"회원가입에 성공했습니다.",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                 }
 
         });
