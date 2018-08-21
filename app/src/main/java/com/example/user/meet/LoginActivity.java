@@ -71,12 +71,10 @@ public class LoginActivity extends AppCompatActivity {
                                 String user_pos=jsonObject.getString("user_pos");
 
                                 if(user_pos.equals("tutor")){//튜터일때
-                                    Intent intent=new Intent(LoginActivity.this,CreateGroupActivity.class);
-                                    intent.putExtra("user_id",user_id);
+                                    Intent intent=new Intent(LoginActivity.this,CreateGroupActivity.class)
                                     LoginActivity.this.startActivity(intent);
                                 }else if(user_pos.equals("tutee")){//튜티일때
                                     Intent intent=new Intent(LoginActivity.this,JoinGroupActivity.class);
-                                    intent.putExtra("user_id",user_id);
                                     LoginActivity.this.startActivity(intent);
                                 }
 
